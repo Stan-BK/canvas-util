@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video-changeBackground</title>
+  <style>
+    .wrap {
+      position: relative;
+    }
+    #canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <video controls id="video" crossorigin="anonymous" src="http://source.geminikspace.com/camera.mp4"></video>
+  <div class="wrap">
+    <img src="" alt="" id="background">
+    <canvas id="canvas"></canvas>
+    <button id="changebtn">更换背景</button>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
