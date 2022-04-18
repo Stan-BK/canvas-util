@@ -6,8 +6,6 @@
     const img = document.createElement('img')
     const canvas = document.getElementById('canvas')
     const ctx = canvas.getContext('2d')
-    // const magnifier = document.getElementById('magnifier')
-    // const mctx = magnifier.getContext('2d')
     img.src = imgSrc
     img.style.display = 'none'
     img.onload = function() {
@@ -19,9 +17,8 @@
       const halfLength = magnifierLength / 4
       ctx.drawImage(img, 0, 0, width, height)
       canvas.addEventListener('mousemove', function(e) {
-        let { offsetLeft, offsetTop } = getOffset(canvas)
-        let mouseX = e.clientX - offsetLeft - halfLength
-        let mouseY = e.clientY - offsetTop - halfLength
+        let mouseX = e.offsetX - halfLength
+        let mouseY = e.offsetY - halfLength
         mouseX < 0 && (mouseX = 0)
         mouseY < 0 && (mouseY = 0)
         const X = width - magnifierLength
@@ -29,20 +26,6 @@
         ctx.drawImage(img, mouseX, mouseY, magnifierLength / 2, magnifierLength / 2,
                            X, Y, magnifierLength, magnifierLength)
       }, false)
-    }
-  
-    function getOffset(element) {
-      let offsetLeft = element.offsetLeft
-      let offsetTop = element.offsetTop
-      let parent = element
-      while(parent = parent.offsetParent) {
-        offsetLeft += parent.offsetLeft
-        offsetTop += parent.offsetTop
-      }
-      return {
-        offsetLeft,
-        offsetTop
-      }
     }
   
     return canvas
